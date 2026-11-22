@@ -101,3 +101,27 @@ app/src/main/kotlin/com/yikefangfeng/xeno/MainActivity.kt  # 模块展示页
 ## 许可
 
 [MIT](LICENSE)
+
+## CI / 发布
+
+仓库自带 GitHub Actions 工作流 `.github/workflows/android-release.yml`：
+
+- push 到 `master`：构建 release APK，作为 artifact 上传（保留 14 天）
+- push tag（如 `v3.0.1`）：构建 + 对齐 + 签名 → 自动创建 GitHub Release，附带 APK 与 `SHA256SUMS.txt`
+
+### 签名
+
+工作流默认用临时调试签名（同一 tag 的包可直接安装，但**下次重建签名会变**）。要固定签名，在仓库 Secrets 里加：
+
+| Secret | 说明 |
+|---|---|
+| `KEYSTORE_BASE64` | `base64 -w0 your.jks` 的结果 |
+| `KEYSTORE_PASSWORD` | keystore 口令 |
+| `KEY_ALIAS` | key 别名 |
+| `KEY_PASSWORD` | key 口令 |
+
+### 校验下载包
+
+```bash
+sha256sum -c SHA256SUMS.txt
+```

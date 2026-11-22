@@ -29,6 +29,21 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    buildTypes {
+        release {
+            // LSPatch / LSPosed 需要单 dex：开 R8 后 59 dex 合并成 1 dex（约 0.8 MB）
+            isMinifyEnabled = true
+            isShrinkResources = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
+        }
+        debug {
+            isMinifyEnabled = false
+        }
+    }
 }
 
 dependencies {
