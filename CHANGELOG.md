@@ -2,6 +2,13 @@
 
 本文件由每次 Release 引用，格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)。
 
+## [3.0.2] - 2026-11-23
+
+### 修复
+
+- CI 工作流 `.github/workflows/android-release.yml` 中 `setup-gradle` 步骤重复声明 `with:`，导致 GitHub 判定工作流文件非法、job 未进入任何步骤即失败
+- `versionCode` / `versionName` 在 `module.toml` 与 `build.gradle.kts` 中不一致（10/3.0.0 vs 11/3.0.1），已统一为 12/3.0.2
+
 ## [3.0.1] - 2026-11-23
 
 ### 修复
