@@ -1,0 +1,39 @@
+# ---------- WebNex 项目元数据（AI 上下文 / 记忆）----------
+.webnex/
+.Agent/
+
+# ---------- Android 构建产物 ----------
+build/
+app/build/
+*/build/
+.gradle/
+.cxx/
+.externalNativeBuild/
+captures/
+release/
+*.apk
+*.aab
+*.ap_
+*.aar
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+output.json
+
+# ---------- 本地与 IDE 配置 ----------
+local.properties
+keystore.properties
+.idea/
+*.iml
+.DS_Store
+*.hprof
+
+# ---------- 签名材料（绝对不要提交）----------
+*.jks
+*.keystore
+*.p12
+*.pepk
+
+# ---------- 混淆与中间产物 ----------
+mapping.txt
+seeds.txt
+usage.txt

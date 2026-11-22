@@ -1,0 +1,49 @@
+version = 2
+
+[module]
+type = "android-app"
+name = "app"
+languageLevel = "JAVA_17"
+output = "build/classes"
+
+[sourceSets.debug]
+scope = "IMPLEMENTATION"
+assets = ["src/debug/assets"]
+java = ["src/debug/java", "src/debug/kotlin"]
+jniLibs = ["src/debug/jniLibs"]
+res = ["src/debug/res"]
+resources = ["src/debug/resources"]
+
+[sourceSets.main]
+scope = "IMPLEMENTATION"
+assets = ["src/main/assets"]
+java = ["src/main/java", "src/main/kotlin"]
+jniLibs = ["src/main/jniLibs"]
+res = ["src/main/res"]
+resources = ["src/main/resources"]
+
+[sourceSets.release]
+scope = "IMPLEMENTATION"
+assets = ["src/release/assets"]
+java = ["src/release/java", "src/release/kotlin"]
+jniLibs = ["src/release/jniLibs"]
+res = ["src/release/res"]
+resources = ["src/release/resources"]
+
+[dependencies]
+implementation = [{ platform = "androidx.compose:compose-bom:2024.06.00" }, "androidx.compose.ui:ui", "androidx.compose.ui:ui-tooling-preview", "androidx.compose.material3:material3", "androidx.compose.material:material-ripple", "androidx.activity:activity-compose:1.9.0", "androidx.core:core-ktx:1.13.1", "kotlin-stdlib"]
+
+[dependencies.debug]
+implementation = ["androidx.compose.ui:ui-tooling"]
+
+[android]
+namespace = "com.yikefangfeng.xeno"
+compileSdk = 36
+minSdk = 31
+targetSdk = 36
+manifest = "src/main/AndroidManifest.xml"
+versionCode = 10
+versionName = "3.0.0"
+isApplication = true
+buildTypes = [{ name = "debug", debuggable = true, minifyEnabled = false, shrinkResources = false }, { name = "release", debuggable = false, minifyEnabled = false, shrinkResources = false, proguardFiles = ["proguard-android-optimize.txt", "proguard-rules.pro"] }]
+compose = true
